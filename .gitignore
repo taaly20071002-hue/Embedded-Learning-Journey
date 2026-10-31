@@ -1,0 +1,30 @@
+# ===== Keil 编译输出(不提交)=====
+Listings/
+Objects/
+*.hex
+*.obj
+*.lst
+*.map
+*.m51
+*.crf
+*.lnp
+*.dep
+*.build_log.htm
+*.lnp
+
+# ===== Keil 用户界面配置(不提交)=====
+*.uvgui.*
+*.uvopt
+
+# ===== 备份文件 =====
+*.bak
+*.bak2
+*.bak3
+
+# ===== 系统文件 =====
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# ===== 所有备份文件(.bak, .bak2, .bak4 ...)=====
+*.bak*

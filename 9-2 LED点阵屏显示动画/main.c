@@ -1,0 +1,38 @@
+#include <REGX52.H>
+#include "Delay.h"
+#include "MatrixLED.h"
+
+unsigned char code Animation[] = {0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+	0xFF,0x10,0x10,0x10,0xFF,0x00,0x00,0x3F,0x25,0x25,0x3D,0x00,0x00,0xFF,0x01,0x01,
+	0x01,0x00,0xFF,0x01,0x01,0x01,0x00,0x00,0x3F,0x21,0x21,0x3F,0x00,0x00,0x00,0x00
+};
+
+void main()
+{
+	unsigned char i;
+	unsigned char Offset = 3;
+	unsigned char FrameCount = 0;		/* 帧计数:控制滚动速度 */
+
+	MatrixLED_Init();
+
+	while(1)
+	{
+		/* ① 扫描显示一帧(8 列)= 约 8ms */
+		for(i = 0; i < 8; i++)
+		{
+			MatrixLED_ShowColumn(i, Animation[i + Offset]);
+		}
+
+		/* ② 每 20 帧(约 160ms)才移动一列 → 滚动变慢 */
+		FrameCount++;
+		if(FrameCount >= 20)
+		{
+			FrameCount = 0;
+			Offset++;
+			if(Offset > (sizeof(Animation) - 8))	/* 防止越界 */
+			{
+				Offset = 0;
+			}
+		}
+	}
+}
