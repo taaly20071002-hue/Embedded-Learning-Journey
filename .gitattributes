@@ -1,0 +1,17 @@
+# 自动处理换行符
+* text=auto
+
+# 源码文件用 LF(跨平台友好)
+*.c     text eol=lf
+*.h     text eol=lf
+*.md    text eol=lf
+*.A51   text eol=lf
+
+# Keil 工程文件用 CRLF(Keil 在 Windows 下的习惯)
+*.uvproj text eol=crlf
+*.uvopt  text eol=crlf
+
+# 二进制/生成文件
+*.hex   binary
+*.obj   binary
+*.lib   binary
